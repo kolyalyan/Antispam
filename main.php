@@ -51,7 +51,7 @@
                 $matches = [];
                 preg_match_all('/к[аеиыо]|[аеиыо]чк[аеиыо]|[аеиыо]|[аеиыо]к|к[аеиыо]н|[аеиыо]ц[аеиыо]/u', $word, $matches);
 
-                $toReplace = $matches[1];
+                $toReplace = $matches[0];
                 echo "!$toReplace\n";
                 $word = str_replace($toReplace, "(к[аеиыо]|[аеиыо]чк[аеиыо]|[аеиыо]|[аеиыо]к|к[аеиыо]н|[аеиыо]ц[аеиыо])", $word);
             }
