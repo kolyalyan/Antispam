@@ -1,3 +1,3 @@
 <?php
-    $smilesArray = []
+    echo "123123";
 ?>
