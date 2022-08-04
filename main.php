@@ -45,5 +45,21 @@
         return False;
     }
 
-    echo (emojiCheck($text) || cyrillicLatinMixChech($text) || cyrillicWordsOverLatinWordsCheck($text)) ? "Spam" : "Ok";
+    function wordlistCheck($text){
+        $wordlist = file_get_contents("./wordlist.txt");
+        $words = explode("\n", $wordlist);
+
+        foreach($words as $word){
+            $preg_word = 
+        }
+    }
+
+    function testFunction($text){
+        $matches = [];
+        echo preg_match_all('/[А-Яа-яЁёA-Za-z](к[аеиыо]|[аеиыо]чк[аеиыо]|[аеиыо]|[аеиыо]к|к[аеиыо]н|[аеиыо]ц[аеиыо])([^А-Яа-яЁёA-Za-z]|$)/', $text, $matches) . "<br>";
+        var_dump($matches);
+    }
+
+    echo testFunction($text);
+    //echo (emojiCheck($text) || cyrillicLatinMixChech($text) || cyrillicWordsOverLatinWordsCheck($text)) ? "Spam" : "Ok";
 ?>
