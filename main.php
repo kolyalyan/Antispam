@@ -1,5 +1,5 @@
 <?php
-    $text = strtolower($_POST['text']);
+    $text = mb_strtolower($_POST['text']);
     echo $text . "\n";
 
     function emojiCheck($text){
