@@ -84,7 +84,7 @@
     }
 
     function soupCheck($text, $wordlist){
-        $soup = preg_replace('/[ ~!@#$%^&*()_+-=\\\//{}\[\]<>,.]', "", $text);
+        $soup = preg_replace('/[^А-Яа-яЁёA-Za-z0-9]/u', "", $text);
         echo $soup;
 
         $words = explode("\n", $wordlist);
