@@ -87,17 +87,7 @@
         $soup = preg_replace('/[^А-Яа-яЁёA-Za-z0-9]/u', "", $text);
         echo $soup;
 
-        $words = explode("\n", $wordlist);
-
-        foreach($words as $word){
-            $entries = preg_match_all($word, $soup);
-
-            if($entries > 0){
-                return True;
-            }
-        }
-
-        return False;
+        return wordlistCheck($soup, $wordlist);
     }
 
     /*
