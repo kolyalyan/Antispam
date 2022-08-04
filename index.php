@@ -21,7 +21,7 @@
             <div id="Spam" class="w3-container w3-red w3-round-large" style="position: absolute; display: none; margin-left: 30px; margin-top: 5px;">
                 <h3>Spam</h3>
             </div>
-            <div id="Ok" class="w3-container w3-green w3-round-large" style="position: absolute; display: inline; margin-left: 30px; margin-top: 5px;">
+            <div id="Ok" class="w3-container w3-green w3-round-large" style="position: absolute; display: none; margin-left: 30px; margin-top: 5px;">
                 <h3>Ok</h3>
             </div>
             <br><br>
