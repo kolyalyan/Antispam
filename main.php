@@ -48,7 +48,7 @@
         $words = explode("\n", $wordlist);
 
         foreach($words as $word){
-            if(strlen($word) > 6){
+            if(mb_strlen($word) > 5){
                 echo $word . "\n";
                 $matches = [];
                 
