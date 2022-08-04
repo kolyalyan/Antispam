@@ -26,7 +26,7 @@
 
     function cyryllicLatinMixChech($text){
         $entries = preg_match_all('/([А-Яа-яЁё][A-Za-z])|([A-Za-z][А-Яа-яЁё])/', $text);
-        
+        var_dump($entries);
         if($entries > 0){
             return True;
         }
