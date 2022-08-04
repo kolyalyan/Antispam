@@ -24,5 +24,15 @@
         return False;
     }
 
-    echo emojiCheck($text) ? "Spam" : "Ok";
+    function cyryllicLatinMixChech($text){
+        $entries = preg_match_all('/([А-Яа-яЁё][A-Za-z])|([A-Za-z][А-Яа-яЁё])/', $text);
+        
+        if($entries > 0){
+            return True;
+        }
+
+        return False;
+    }
+
+    echo (emojiCheck($text) && cyryllicLatinMixChech($text)) ? "Spam" : "Ok";
 ?>
