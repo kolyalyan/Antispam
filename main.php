@@ -2,29 +2,6 @@
     $text = $_POST['text'];
 
     function emojiCheck($text){
-        $emoji_array = ['🕸','🌵','🎄','🌲','🌳','🌴','🌱','🌿','☘️','🍀','🍃','🍂','🍁','🍄','🔥','⚡️','💥','✨','🌈','❄️','💦','💨','🌬','🍭','🍬','🍫','💫','⭐️','🌟'];
-
-        foreach($emoji_array as $emoji){
-            $entries = substr_count($text, $emoji);
-            if($entries > 1){
-                return True;
-            }
-        }
-
-        $lines = explode("\n", $text);
-        
-        foreach($lines as $line){
-            foreach($emoji_array as $emoji){
-                if(str_starts_with($line, $emoji) || str_ends_with($line, $emoji)){
-                    return True;
-                }
-            }
-        }
-
-        return False;
-    }
-
-    function emojiCheck2($text){
         $entries = preg_match_all('/[🕸🌵🎄🌲🌳🌴🌱🌿☘️🍀🍃🍂🍁🍄🔥⚡️💥✨🌈❄️💦💨🌬🍭🍬🍫💫⭐️🌟]/u', $text);
 
         if($entries > 1){
@@ -45,7 +22,7 @@
     }
 
     function cyrillicLatinMixChech($text){
-        $entries = preg_match_all('/([А-Яа-яЁё][A-Za-z])|([A-Za-z][А-Яа-яЁё])/', $text);
+        $entries = preg_match_all('/([А-Яа-яЁё][A-Za-z])|([A-Za-z][А-Яа-яЁё])/u', $text);
 
         if($entries > 0){
             return True;
@@ -55,7 +32,7 @@
     }
 
     function cyrillicWordsOverLatinWordsCheck($text){
-        $cyrillicWords = preg_match_all('/(^| )[А-Яа-яЁё]/', $text);
+        $cyrillicWords = preg_match_all('/(^| )[А-Яа-яЁё]/u', $text);
         $latinWords = preg_match_all('/(^| )[A-Za-z]/', $text);
 
         if($cyrillicWords <= $latinWords){
@@ -80,7 +57,5 @@
         var_dump($matches);
     }
 
-    echo (emojiCheck2($text)) ? "Spam" : "Ok";
-
-    //echo (emojiCheck($text) || cyrillicLatinMixChech($text) || cyrillicWordsOverLatinWordsCheck($text)) ? "Spam" : "Ok";
+    echo (emojiCheck($text) || cyrillicLatinMixChech($text) || cyrillicWordsOverLatinWordsCheck($text)) ? "Spam" : "Ok";
 ?>
