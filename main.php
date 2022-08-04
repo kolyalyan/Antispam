@@ -85,7 +85,6 @@
 
     function soupCheck($text, $wordlist){
         $soup = preg_replace('/[^А-Яа-яЁёA-Za-z0-9]/u', "", $text);
-        echo $soup . "\n";
 
         return wordlistCheck($soup, $wordlist);
     }
@@ -96,8 +95,8 @@
     var_dump(cyrillicWordsOverLatinWordsCheck($text));
     var_dump(wordlistCheck($text));
     var_dump(digitsCheck($text));
+    var_dump(soupCheck($text, $wordlist));
     */
 
-    echo soupCheck($text, $wordlist) ? "Spam" : "Ok";
-    //echo (emojiCheck($text) || cyrillicLatinMixChech($text) || cyrillicWordsOverLatinWordsCheck($text) || wordlistCheck($text, $wordlist) || digitsCheck($text)) ? "Spam" : "Ok";
+    echo (emojiCheck($text) || cyrillicLatinMixChech($text) || cyrillicWordsOverLatinWordsCheck($text) || wordlistCheck($text, $wordlist) || digitsCheck($text) || soupCheck($text, $wordlist)) ? "Spam" : "Ok";
 ?>
