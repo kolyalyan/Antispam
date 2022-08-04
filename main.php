@@ -1,6 +1,8 @@
 <?php
     $text = mb_strtolower($_POST['text']);
 
+    $wordlist = file_get_contents("./wordlist.txt");
+
     function emojiCheck($text){
         $entries = preg_match_all('/[🕸🌵🎄🌲🌳🌴🌱🌿☘️🍀🍃🍂🍁🍄🔥⚡️💥✨🌈❄️💦💨🌬🍭🍬🍫💫⭐️🌟]/u', $text);
 
@@ -42,8 +44,7 @@
         return False;
     }
 
-    function wordlistCheck($text){
-        $wordlist = file_get_contents("./wordlist.txt");
+    function wordlistCheck($text, $wordlist){
         $words = explode("\n", $wordlist);
 
         foreach($words as $word){
@@ -82,13 +83,20 @@
         return False;
     }
 
-    function testFunction($text){
-        $text = str_replace("\n", " ", $text);
-        $words = explode(" ", $text);
-        echo implode("<br>", $words);
+    function soupCheck($text, $wordlist){
+        $soup = preg_replace('/[ ~!@#$%^&*()_+-=\\\//{}\[\]<>,.]', "", $text);
 
-        //echo preg_match_all('/к[аеиыо]|[аеиыо]чк[аеиыо]|[аеиыо]|[аеиыо]к|к[аеиыо]н|[аеиыо]ц[аеиыо]/u', $text, $matches) . "<br>";
-        //var_dump($matches);
+        $words = explode("\n", $wordlist);
+
+        foreach($words as $word){
+            $entries = preg_match_all($word, $soup);
+
+            if($entries > 0){
+                return True;
+            }
+        }
+
+        return False;
     }
 
     /*
@@ -99,5 +107,6 @@
     var_dump(digitsCheck($text));
     */
 
-    echo (emojiCheck($text) || cyrillicLatinMixChech($text) || cyrillicWordsOverLatinWordsCheck($text) || wordlistCheck($text) || digitsCheck($text)) ? "Spam" : "Ok";
+    echo soupCheck($text, $wordlist) ? "Spam" : "Ok";
+    //echo (emojiCheck($text) || cyrillicLatinMixChech($text) || cyrillicWordsOverLatinWordsCheck($text) || wordlistCheck($text, $wordlist) || digitsCheck($text)) ? "Spam" : "Ok";
 ?>
