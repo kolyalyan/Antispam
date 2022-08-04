@@ -89,6 +89,16 @@
         return wordlistCheck($soup, $wordlist);
     }
 
+    function specialSymbolCheck($text){
+        $entries = preg_match_all('/[~@#\$%\^&\*=\+\/\\\|<>\[\]{}]{4,}/', $text);
+
+        if($entries > 0){
+            return True;
+        }
+
+        return False;
+    }
+
     /*
     var_dump(emojiCheck($text));
     var_dump(cyrillicLatinMixChech($text));
@@ -96,7 +106,8 @@
     var_dump(wordlistCheck($text));
     var_dump(digitsCheck($text));
     var_dump(soupCheck($text, $wordlist));
+    var_dump(specialSymbolCheck($text));
     */
 
-    echo (emojiCheck($text) || cyrillicLatinMixChech($text) || cyrillicWordsOverLatinWordsCheck($text) || wordlistCheck($text, $wordlist) || digitsCheck($text) || soupCheck($text, $wordlist)) ? "Spam" : "Ok";
+    echo (emojiCheck($text) || cyrillicLatinMixChech($text) || cyrillicWordsOverLatinWordsCheck($text) || wordlistCheck($text, $wordlist) || digitsCheck($text) || soupCheck($text, $wordlist) || specialSymbolCheck($text)) ? "Spam" : "Ok";
 ?>
