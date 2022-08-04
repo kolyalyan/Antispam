@@ -34,5 +34,5 @@
         return False;
     }
 
-    echo (emojiCheck($text) && cyryllicLatinMixChech($text)) ? "Spam" : "Ok";
+    echo (emojiCheck($text) || cyryllicLatinMixChech($text)) ? "Spam" : "Ok";
 ?>
