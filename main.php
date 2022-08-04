@@ -26,7 +26,22 @@
 
     function emojiCheck2($text){
         $entries = preg_match_all('/[🕸🌵🎄🌲🌳🌴🌱🌿☘️🍀🍃🍂🍁🍄🔥⚡️💥✨🌈❄️💦💨🌬🍭🍬🍫💫⭐️🌟]/u', $text);
-        echo $entries;
+
+        if($entries > 1){
+            return True;
+        }
+
+        $lines = explode("\n", $text);
+        
+        foreach($lines as $line){
+            $entries = preg_match_all('/^[🕸🌵🎄🌲🌳🌴🌱🌿☘️🍀🍃🍂🍁🍄🔥⚡️💥✨🌈❄️💦💨🌬🍭🍬🍫💫⭐️🌟]|[🕸🌵🎄🌲🌳🌴🌱🌿☘️🍀🍃🍂🍁🍄🔥⚡️💥✨🌈❄️💦💨🌬🍭🍬🍫💫⭐️🌟]$/u', $line);
+
+            if($entries > 0){
+                return True;
+            }
+        }
+
+        return False;
     }
 
     function cyrillicLatinMixChech($text){
@@ -65,7 +80,7 @@
         var_dump($matches);
     }
 
-    emojiCheck2($text);
+    echo (emojiCheck2($text)) ? "Spam" : "Ok";
 
     //echo (emojiCheck($text) || cyrillicLatinMixChech($text) || cyrillicWordsOverLatinWordsCheck($text)) ? "Spam" : "Ok";
 ?>
