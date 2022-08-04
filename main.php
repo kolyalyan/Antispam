@@ -24,7 +24,7 @@
         return False;
     }
 
-    function cyryllicLatinMixChech($text){
+    function cyrillicLatinMixChech($text){
         $entries = preg_match_all('/([А-Яа-яЁё][A-Za-z])|([A-Za-z][А-Яа-яЁё])/', $text);
 
         if($entries > 0){
@@ -34,5 +34,16 @@
         return False;
     }
 
-    echo (emojiCheck($text) || cyryllicLatinMixChech($text)) ? "Spam" : "Ok";
+    function cyrillicWordsOverLatinWordsCheck($text){
+        $cyrillicWords = preg_match_all('/(^| )[А-Яа-яЁё]/', $text);
+        $latinWords = preg_match_all('/(^| )[A-Za-z]/', $text);
+
+        if($cyrillicWords <= $latinWords){
+            return True;
+        }
+
+        return False;
+    }
+
+    echo (emojiCheck($text) || cyrillicLatinMixChech($text) || cyrillicWordsOverLatinWordsCheck($text)) ? "Spam" : "Ok";
 ?>
