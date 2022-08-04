@@ -52,7 +52,7 @@
 
             $toReplace = $matches[1];
             str_replace($toReplace, "/к[аеиыо]|[аеиыо]чк[аеиыо]|[аеиыо]|[аеиыо]к|к[аеиыо]н|[аеиыо]ц[аеиыо]/u", $word);
-            echo $word;
+            echo $word . "\n";
         }
     }
 
