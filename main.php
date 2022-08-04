@@ -50,7 +50,7 @@
         $words = explode("\n", $wordlist);
 
         foreach($words as $word){
-            $preg_word = 
+            //$preg_word = 
         }
     }
 
