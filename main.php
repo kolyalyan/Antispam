@@ -74,7 +74,7 @@
     }
 
     function testFunction($text){
-        $text = str_replace("\n", " ", strtolower($text));
+        $text = str_replace("\n", " ", $text);
         $words = explode(" ", $text);
         echo implode("<br>", $words);
 
