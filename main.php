@@ -2,19 +2,25 @@
     $text = $_POST['text'];
 
     function emojiCheck($text){
-        $matches = [];
-        mb_ereg('/[(\x{dd83d}\x{dd78})]/', $text, $matches);
-        var_dump($matches);
-        /*
-        $lines = explode("\n", $text);
+        $emoji_array = ['🕸','🌵','🎄','🌲','🌳','🌴','🌱','🌿','☘️','🍀','🍃','🍂','🍁','🍄','🔥','⚡️','💥','✨','🌈','❄️','💦','💨','🌬','🍭','🍬','🍫','💫','⭐️','🌟'];
 
-        foreach($lines as $line){
-            echo $line . "\n";
-            if(mb_ereg('/[🕸🌵🎄🌲🌳🌴🌱🌿☘️🍀🍃🍂🍁🍄🔥⚡️💥✨🌈❄️💦💨🌬🍭🍬🍫💫⭐️🌟]$/', $line) > 0){
+        foreach($emoji_array as $emoji){
+            $entries = substr_count($text, $emoji);
+            if($entries > 1){
                 return True;
             }
         }
-*/
+
+        $lines = explode("\n", $text);
+        
+        foreach($lines as $line){
+            foreach($emoji_array as $emoji){
+                if(str_starts_with($line, $emoji) || str_ends_with($line, $emoji)){
+                    return True;
+                }
+            }
+        }
+
         return False;
     }
 
