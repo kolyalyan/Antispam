@@ -67,6 +67,7 @@
             if($entries > 0){
                 echo $word . "\n";
                 //return True;
+            }
         }
 
         return False;
