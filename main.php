@@ -52,10 +52,13 @@
     }
 
     function testFunction($text){
-        $matches = [];
-        echo preg_match_all('/[А-Яа-яЁёA-Za-z](к[аеиыо]|[аеиыо]чк[аеиыо]|[аеиыо]|[аеиыо]к|к[аеиыо]н|[аеиыо]ц[аеиыо])([^А-Яа-яЁёA-Za-z]|$)/u', $text, $matches) . "<br>";
-        var_dump($matches);
-    }
+        $text = str_replace("\n", " ", $text);
+        $words = explode(" ", $text);
+        echo implode("<br>", $words);
 
-    echo (emojiCheck($text) || cyrillicLatinMixChech($text) || cyrillicWordsOverLatinWordsCheck($text)) ? "Spam" : "Ok";
+        //echo preg_match_all('/к[аеиыо]|[аеиыо]чк[аеиыо]|[аеиыо]|[аеиыо]к|к[аеиыо]н|[аеиыо]ц[аеиыо]/u', $text, $matches) . "<br>";
+        //var_dump($matches);
+    }
+    testFunction($text);
+    //echo (emojiCheck($text) || cyrillicLatinMixChech($text) || cyrillicWordsOverLatinWordsCheck($text)) ? "Spam" : "Ok";
 ?>
