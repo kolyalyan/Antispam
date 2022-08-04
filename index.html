@@ -33,7 +33,7 @@
         }
 
         function check(){
-            text = btoa(document.getElementById("text").value);
+            text = document.getElementById("text").value;
             postData("main", "text=" + text, showResult);
         }
     </script>

@@ -1,5 +1,5 @@
 <?php
-    $text = base64_decode($_POST['text']);
+    $text = $_POST['text'];
 
     function emojiCheck($text){
         $lines = explode("\n", $text);
