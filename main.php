@@ -60,6 +60,6 @@
         var_dump($matches);
     }
 
-    echo testFunction($text);
+    testFunction($text);
     //echo (emojiCheck($text) || cyrillicLatinMixChech($text) || cyrillicWordsOverLatinWordsCheck($text)) ? "Spam" : "Ok";
 ?>
