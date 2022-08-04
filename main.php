@@ -64,6 +64,7 @@
 
             echo $word . "\n";
             $entries = preg_match_all($word, $text);
+            echo $entries . "\n";
 
             if($entries > 0){
                 return True;
