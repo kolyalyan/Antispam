@@ -47,11 +47,16 @@
         $words = explode("\n", $wordlist);
 
         foreach($words as $word){
-            $matches = [];
-            preg_match_all('/к[аеиыо]|[аеиыо]чк[аеиыо]|[аеиыо]|[аеиыо]к|к[аеиыо]н|[аеиыо]ц[аеиыо]/u', $word, $matches);
+            if(strlen($word > 4)){
+                $matches = [];
+                preg_match_all('/к[аеиыо]|[аеиыо]чк[аеиыо]|[аеиыо]|[аеиыо]к|к[аеиыо]н|[аеиыо]ц[аеиыо]/u', $word, $matches);
 
-            $toReplace = $matches[1];
-            $word = str_replace($toReplace, "/к[аеиыо]|[аеиыо]чк[аеиыо]|[аеиыо]|[аеиыо]к|к[аеиыо]н|[аеиыо]ц[аеиыо]/u", $word);
+                $toReplace = $matches[1];
+                $word = str_replace($toReplace, "(к[аеиыо]|[аеиыо]чк[аеиыо]|[аеиыо]|[аеиыо]к|к[аеиыо]н|[аеиыо]ц[аеиыо])", $word);
+            }
+
+            $word = "/$word/u";
+            
             echo $word . "\n";
         }
     }
