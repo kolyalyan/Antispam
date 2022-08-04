@@ -49,7 +49,7 @@
         foreach($words as $word){
             if(strlen($word > 4)){
                 $matches = [];
-                preg_match_all('/к[аеиыо]|[аеиыо]чк[аеиыо]|[аеиыо]|[аеиыо]к|к[аеиыо]н|[аеиыо]ц[аеиыо]/u', $word, $matches);
+                preg_match_all('/(к[аеиыо]|[аеиыо]чк[аеиыо]|[аеиыо]|[аеиыо]к|к[аеиыо]н|[аеиыо]ц[аеиыо])$/u', $word, $matches);
 
                 $toReplace = $matches[0][0];
                 echo "!$toReplace\n";
