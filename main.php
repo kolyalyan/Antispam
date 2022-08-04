@@ -48,7 +48,7 @@
         $words = explode("\n", $wordlist);
 
         foreach($words as $word){
-            if(strlen($word > 4)){
+            if(strlen($word > 5)){
                 $matches = [];
                 
                 $entries = preg_match_all('/(к[аеиыо03@]|[аеиыо03@]чк[аеиыо03@]|[аеиыо03@]|[аеиыо03@]к|к[аеиыо03@]н|[аеиыо03@]ц[аеиыо03@]|[аеиыо03@]ньк[аеиыо03@])$/u', $word, $matches);
