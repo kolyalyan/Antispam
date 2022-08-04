@@ -66,7 +66,8 @@
             $entries = preg_match_all($word, $text);
 
             if($entries > 0){
-                return True;
+                echo $word . "\n";
+                //return True;
             }
         }
 
@@ -85,7 +86,7 @@
 
     function soupCheck($text, $wordlist){
         $soup = preg_replace('/[^А-Яа-яЁёA-Za-z0-9]/u', "", $text);
-        echo $soup;
+        echo $soup . "\n";
 
         return wordlistCheck($soup, $wordlist);
     }
