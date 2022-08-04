@@ -49,7 +49,6 @@
 
         foreach($words as $word){
             if(mb_strlen($word) > 5){
-                echo $word . "\n";
                 $matches = [];
                 
                 $entries = preg_match_all('/(к[аеиыо03@]|[аеиыо03@]чк[аеиыо03@]|[аеиыо03@]|[аеиыо03@]к|к[аеиыо03@]н|[аеиыо03@]ц[аеиыо03@]|[аеиыо03@]ньк[аеиыо03@])$/u', $word, $matches);
@@ -67,7 +66,6 @@
             $entries = preg_match_all($word, $text);
 
             if($entries > 0){
-                echo $word . "\n";
                 return True;
             }
         }
