@@ -53,7 +53,7 @@
 
                 $toReplace = $matches[0][0];
                 echo "!$toReplace\n";
-                //$word = str_replace($toReplace, "(к[аеиыо]|[аеиыо]чк[аеиыо]|[аеиыо]|[аеиыо]к|к[аеиыо]н|[аеиыо]ц[аеиыо])", $word);
+                $word = preg_replace("/$toReplace$/u", "(к[аеиыо]|[аеиыо]чк[аеиыо]|[аеиыо]|[аеиыо]к|к[аеиыо]н|[аеиыо]ц[аеиыо])", $word);
             }
 
             $word = "/$word/u";
