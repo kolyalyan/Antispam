@@ -65,8 +65,7 @@
             $entries = preg_match_all($word, $text);
 
             if($entries > 0){
-                echo $word . "\n";
-                //return True;
+                return True;
             }
         }
 
@@ -92,11 +91,13 @@
         //var_dump($matches);
     }
 
+    /*
     var_dump(emojiCheck($text));
     var_dump(cyrillicLatinMixChech($text));
     var_dump(cyrillicWordsOverLatinWordsCheck($text));
     var_dump(wordlistCheck($text));
     var_dump(digitsCheck($text));
+    */
 
     echo (emojiCheck($text) || cyrillicLatinMixChech($text) || cyrillicWordsOverLatinWordsCheck($text) || wordlistCheck($text) || digitsCheck($text)) ? "Spam" : "Ok";
 ?>
