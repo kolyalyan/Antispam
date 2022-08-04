@@ -1,6 +1,5 @@
 <?php
     $text = mb_strtolower($_POST['text']);
-    echo $text . "\n";
 
     function emojiCheck($text){
         $entries = preg_match_all('/[🕸🌵🎄🌲🌳🌴🌱🌿☘️🍀🍃🍂🍁🍄🔥⚡️💥✨🌈❄️💦💨🌬🍭🍬🍫💫⭐️🌟]/u', $text);
@@ -51,25 +50,33 @@
             if(strlen($word > 4)){
                 $matches = [];
                 
-                $entries = preg_match_all('/(к[аеиыо]|[аеиыо]чк[аеиыо]|[аеиыо]|[аеиыо]к|к[аеиыо]н|[аеиыо]ц[аеиыо]|[аеиыо]ньк[аеиыо])$/u', $word, $matches);
+                $entries = preg_match_all('/(к[аеиыо03@]|[аеиыо03@]чк[аеиыо03@]|[аеиыо03@]|[аеиыо03@]к|к[аеиыо03@]н|[аеиыо03@]ц[аеиыо03@]|[аеиыо03@]ньк[аеиыо03@])$/u', $word, $matches);
 
                 if($entries > 0){
                     $toReplace = $matches[0][0];
-                    $word = preg_replace("/$toReplace$/u", "(к[аеиыо]|[аеиыо]чк[аеиыо]|[аеиыо]|[аеиыо]к|к[аеиыо]н|[аеиыо]ц[аеиыо]|[аеиыо]ньк[аеиыо])", $word);
+                    $word = preg_replace("/$toReplace$/u", "(к[аеиыо03@]|[аеиыо03@]чк[аеиыо03@]|[аеиыо03@]|[аеиыо03@]к|к[аеиыо03@]н|[аеиыо03@]ц[аеиыо03@]|[аеиыо03@]ньк[аеиыо03@])", $word);
                 }else{
-                    $word = preg_replace("/[я]*$/u", "(я|[аеиыо]к|ч[аеиыо]к|к[аеиыо]|[аеиыо]ньк[аеиыо])", $word);
+                    $word = preg_replace("/[я]*$/u", "(я|[аеиыо03@]к|ч[аеиыо03@]к|к[аеиыо03@]|[аеиыо03@]ньк[аеиыо03@])", $word);
                 }
             }
 
             $word = "/$word/u";
 
-            //echo $word . "\n";
             $entries = preg_match_all($word, $text);
-            //echo $entries . "\n";
 
             if($entries > 0){
                 return True;
             }
+        }
+
+        return False;
+    }
+
+    function digitsCheck($text){
+        $entries = preg_match_all('/[А-Яа-яЁёA-Za-z]+[0-9]|[0-9][А-Яа-яЁёA-Za-z-]{4,}/u', $text);
+
+        if($entries > 0){
+            return True;
         }
 
         return False;
@@ -83,7 +90,6 @@
         //echo preg_match_all('/к[аеиыо]|[аеиыо]чк[аеиыо]|[аеиыо]|[аеиыо]к|к[аеиыо]н|[аеиыо]ц[аеиыо]/u', $text, $matches) . "<br>";
         //var_dump($matches);
     }
-    echo "\n\n";
-    echo wordlistCheck($text) ? "Spam" : "Ok";
-    //echo (emojiCheck($text) || cyrillicLatinMixChech($text) || cyrillicWordsOverLatinWordsCheck($text)) ? "Spam" : "Ok";
+
+    echo (emojiCheck($text) || cyrillicLatinMixChech($text) || cyrillicWordsOverLatinWordsCheck($text) || wordlistCheck($text) || digitsCheck($text)) ? "Spam" : "Ok";
 ?>
