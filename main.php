@@ -62,7 +62,7 @@
 
             $word = "/$word/u";
 
-            //echo $word . "\n";
+            echo $word . "\n";
             $entries = preg_match_all($word, $text);
 
             if($entries > 0){
@@ -81,6 +81,7 @@
         //echo preg_match_all('/к[аеиыо]|[аеиыо]чк[аеиыо]|[аеиыо]|[аеиыо]к|к[аеиыо]н|[аеиыо]ц[аеиыо]/u', $text, $matches) . "<br>";
         //var_dump($matches);
     }
+    echo "\n\n";
     echo wordlistCheck($text) ? "Spam" : "Ok";
     //echo (emojiCheck($text) || cyrillicLatinMixChech($text) || cyrillicWordsOverLatinWordsCheck($text)) ? "Spam" : "Ok";
 ?>
