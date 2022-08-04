@@ -47,18 +47,23 @@
         $words = explode("\n", $wordlist);
 
         foreach($words as $word){
-            //$preg_word = 
+            $matches = [];
+            preg_match_all('/к[аеиыо]|[аеиыо]чк[аеиыо]|[аеиыо]|[аеиыо]к|к[аеиыо]н|[аеиыо]ц[аеиыо]/u', $word, $matches);
+
+            $toReplace = $matches[1];
+            str_replace($toReplace, "/к[аеиыо]|[аеиыо]чк[аеиыо]|[аеиыо]|[аеиыо]к|к[аеиыо]н|[аеиыо]ц[аеиыо]/u", $word);
+            echo $word;
         }
     }
 
     function testFunction($text){
-        $text = str_replace("\n", " ", $text);
+        $text = str_replace("\n", " ", strtolower($text));
         $words = explode(" ", $text);
         echo implode("<br>", $words);
 
         //echo preg_match_all('/к[аеиыо]|[аеиыо]чк[аеиыо]|[аеиыо]|[аеиыо]к|к[аеиыо]н|[аеиыо]ц[аеиыо]/u', $text, $matches) . "<br>";
         //var_dump($matches);
     }
-    testFunction($text);
+    wordlistCheck($text);
     //echo (emojiCheck($text) || cyrillicLatinMixChech($text) || cyrillicWordsOverLatinWordsCheck($text)) ? "Spam" : "Ok";
 ?>
