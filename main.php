@@ -1,5 +1,5 @@
 <?php
-    $text = $_POST['text'];
+    $text = strtolower($_POST['text']);
 
     function emojiCheck($text){
         $entries = preg_match_all('/[🕸🌵🎄🌲🌳🌴🌱🌿☘️🍀🍃🍂🍁🍄🔥⚡️💥✨🌈❄️💦💨🌬🍭🍬🍫💫⭐️🌟]/u', $text);
