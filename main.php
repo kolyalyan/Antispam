@@ -90,9 +90,9 @@
     }
 
     function specialSymbolCheck($text){
-        $entries = preg_match_all('/[~@#\$%\^&\*=\+\/\\\|<>\[\]{}]{4,}/', $text);
+        $entries = preg_match_all('/[~@#\$%\^&\*=\+\/\\\|<>\[\]{}]/', $text);
 
-        if($entries > 0){
+        if($entries > 4){
             return True;
         }
 
